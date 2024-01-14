@@ -1,0 +1,10 @@
+.error-in-Field {
+    border: 2px solid firebrick;
+}
+
+.form-disabled {
+    pointer-events: none;
+    opacity: 0.5;
+}
+
+

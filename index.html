@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Пересчитать пропорции рецепта</title>
+    <meta
+      name="description"
+      content="Калькулятор пересчета ингредиентов для любых рецептов. Пересчитать пропорции рецепта онлайн."
+    />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <script type="module" src="./script.js"></script>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
+      crossorigin="anonymous"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"
+    />
+    <link rel="stylesheet" href="./main.css" />
+    <link rel="icon" type="image/png" sizes="96x96" href="/favicon-96x96.png" />
+  </head>
+
+  <body>
+    <h1 class="display-6 mx-2 mx-md-5 mt-2">
+      Калькулятор пересчета ингредиентов для рецепта
+    </h1>
+    <p class="mx-2 mx-md-5">
+      Масштабируйте рецепт с сохранением верных пропорций ингредиентов в удобном
+      онлайн-калькуляторе. Вы получите рецепт с нужными пропорциями ингредиентов
+      и сможете сохранить его себе на устройство.
+    </p>
+    <div class="row gx-0">
+      <div class="col"></div>
+      <div
+        class="col-md-10 col-xl-8 mx-sm-4 my-2 p-3 rounded border border-info bg-primary bg-gradient bg-opacity-10"
+      >
+        <h2 class="h6 badge text-bg-primary rounded-pill bg-opacity-75">
+          Как пользоваться?
+        </h2>
+        <ol class="small text-body-secondary">
+          <li>
+            Построчно введите продукты оригинального рецепта, используйте кнопку
+            «добавить ингредиент».
+          </li>
+          <li>Нажмите кнопку «пересчитать значения».</li>
+          <li>
+            Изменяйте объем любой позиции, а количество остальных продуктов
+            пересчитается автоматически.
+          </li>
+        </ol>
+        <h2 class="h6 badge text-bg-primary rounded-pill bg-opacity-75">
+          Важно!
+        </h2>
+        <ul class="small text-body-secondary">
+          <li>
+            Вы можете скачать рецепт с новыми пропорциями себе на устройство по
+            кнопке «сохранить рецепт»
+          </li>
+          <li>
+            Вы можете вернуться и скорректировать оригинальные значения по
+            кнопке «изменить оригинал»
+          </li>
+        </ul>
+      </div>
+      <div class="col"></div>
+    </div>
+    <div class="app-box row gx-0">
+      <div class="col"></div>
+      <div
+        class="app bg-light border border-primary-subtle rounded col-md-10 col-xl-8"
+      >
+        <div class="main">
+          <!-- divRoot -->
+          <div class="form-recalc mt-2">
+            <div id="calc-recipe" hidden>
+              <p class="mx-2 lead text-body">
+                Меняйте кол-во ингридиентов, а калькулятор
+                <mark>пересчитает</mark>
+                пропорции:
+              </p>
+              <div class="recounter mx-4 bg-body-secondary rounded-1"></div>
+              <div class="mx-4 my-3">
+                <input
+                  type="button"
+                  name="ejector"
+                  form="recounter"
+                  value="Сбросить ↺"
+                  class="btn btn-secondary btn-sm"
+                />
+                <a
+                  href=""
+                  download="Рецепт_Re-count-for-recipe"
+                  title="Скачать рецепт в виде текста"
+                  id="download-file-link"
+                  role="button"
+                  class="btn btn-success btn-sm"
+                  >Скачать рецепт ⭳</a
+                >
+              </div>
+              <div class="row gx-0 my-2 mx-2">
+                <input
+                  type="button"
+                  name="reinit-button"
+                  value="Изменить оригинал 🡇"
+                  class="btn btn-dark"
+                  disabled
+                />
+              </div>
+            </div>
+            <div class="templates">
+              <template id="tmpl-field-recalc">
+                <div class="field-recalc row text-body p-2">
+                  <div class="col-3 my-auto">
+                    <input type="number" min="0" class="form-control" />
+                  </div>
+                  <div class="col my-auto">
+                    <label class="form-label my-0"></label>
+                  </div>
+                </div>
+              </template>
+            </div>
+          </div>
+          <!-- /divRoot -->
+          <!-- divRoot -->
+          <div class="form-builder my-2">
+            <div id="input-recipe">
+              <div class="mx-2 pt-3">
+                <p class="lead text-body">
+                  Введите ингредиенты согласно оригинального рецепта
+                </p>
+                <p class="small text-secondary">
+                  (Для добавления продукта воспользуйтесь кнопкой "Добавить
+                  ингредиент")
+                </p>
+              </div>
+              <div class="user-inputs"></div>
+              <input
+                type="button"
+                name="insert-new"
+                value="Добавить ингредиент"
+                class="btn btn-primary mx-4 my-3 btn-sm"
+              />
+            </div>
+            <div class="templates">
+              <template id="tmpl-ingredient">
+                <div class="ingredient-fields-row row gx-0 mx-4">
+                  <div class="ingredient-name row col gx-0 p-2 bg-info-subtle">
+                    <label for="name" class="form-label small"
+                      >Название:
+                    </label>
+                    <input
+                      type="text"
+                      name="name"
+                      placeholder=" Например: молоко"
+                      class="form-control"
+                    />
+                  </div>
+                  <div
+                    class="ingredient-value row col-3 gx-0 p-2 bg-info bg-opacity-10"
+                  >
+                    <label for="value" class="form-label small">Объем:</label>
+                    <input
+                      type="number"
+                      min="0.001"
+                      name="value"
+                      placeholder=" 100"
+                      class="form-control"
+                    />
+                  </div>
+                  <div
+                    class="ingredient-measure row col-2 gx-0 p-2 bg-info-subtle"
+                  >
+                    <label for="measure" class="form-label small"
+                      >Единица:</label
+                    >
+                    <input
+                      list="measures"
+                      name="measure"
+                      placeholder=" мл"
+                      class="form-control"
+                    />
+                    <datalist id="measures">
+                      <option value="гр | мл"></option>
+                      <option value="кг | л"></option>
+                      <option value="мг"></option>
+                      <option value="шт"></option>
+                      <option value="ч.л"></option>
+                      <option value="ст.л"></option>
+                      <option value="дес.л"></option>
+                      <option value="стак."></option>
+                    </datalist>
+                  </div>
+                  <button
+                    type="button"
+                    class="btn-close m-auto px-2"
+                    aria-label="Close"
+                  ></button>
+                </div>
+              </template>
+            </div>
+          </div>
+          <!-- /divRoot -->
+          <div class="row mx-2">
+            <input
+              type="button"
+              name="init-button"
+              value="Пересчитать значения"
+              class="btn btn-success mb-2"
+            />
+          </div>
+        </div>
+        <div class="err-msgs">
+          <p hidden class="error-msg-red err-invalid-input text-danger">
+            <strong>ОШИБКА!</strong> <br />Недопустимое значение объема!<br />
+            Объем должен быть указан числом и быть не менее 0.001.
+          </p>
+        </div>
+      </div>
+      <div class="col"></div>
+    </div>
+    <h2 class="h5 mx-2 mx-md-5 mt-4 text-body">
+      Что можно посчитать в онлайн-калькуляторе для пересчета ингредиентов ?
+    </h2>
+    <div class="mt-4 mx-2 mx-md-5 fw-light">
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th>Что пересчитывать</th>
+            <th>Как пересчитать:</th>
+            <th>Примеры:</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Пересчитать состав рецепта на одну позицию</td>
+            <td>
+              Введите оригинальный состав рецепта а затем измените значение
+              требуемого продукта
+            </td>
+            <td>
+              У вас есть рецепт торта на основе пяти яиц, но у вас только
+              четыре.
+            </td>
+          </tr>
+          <tr>
+            <td>Уменьшение и увеличение количества порций готового блюда</td>
+            <td>
+              При вводе состава оригинального рецепта введите также позицию
+              &laquo;порции&raquo; а количество порций в штуках внесите в окошко
+              &laquo;количество&raquo;. В режиме пересчета измените эту позицию
+            </td>
+            <td>
+              Оригинальный рецепт на три порции, а приготовить нужно пять.
+            </td>
+          </tr>
+          <tr>
+            <td>Изменить итоговый &laquo;выход&raquo; (вес) блюда</td>
+            <td>
+              При вводе состава оригинального рецепта введите также позицию
+              &laquo;вес&raquo; а оригинальный вес продукта внесите в окошко
+              &laquo;количество&raquo;. В режиме пересчета измените эту позицию
+              на тот вес, который необходим
+            </td>
+            <td>
+              У вас есть рецепт для пирога 1 кг, а вы хотите испечь пирог весом
+              1,5 кг.
+            </td>
+          </tr>
+          <tr>
+            <td>Масштабировать рецепт в несколько раз или на несколько %</td>
+            <td>
+              При вводе состава оригинального рецепта введите также позицию
+              &laquo;масштаб&raquo; и в окошке &laquo;количество&raquo; укажите
+              1 или 100%. В режиме пересчета измените эту в столько раз или на
+              такой %, который требуется
+            </td>
+            <td>
+              У вас есть рецепт одного кекса, а вы планируете приготовить пять.
+              Или нужен кекс размером в половину (50%) оригинального.
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="m-5">
+      <a class="link-offset-2 link-underline link-underline-opacity-0" href="https://github.com/marss-hub/re-count-for-recipe">
+        <div>
+          <span class="badge text-bg-secondary fw-medium fs-6"
+            >Re-count for recipe</span
+          >
+        </div>
+        <div>
+          <i class="bi-github" style="font-size: 2em; color: #6c757d">
+            GitHub</i
+          >
+        </div>
+      </a>
+    </div>
+  </body>
+</html>

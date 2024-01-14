@@ -1,2 +1,3 @@
-# re-count-for-recipe
-Web application for recalculating recipe ingredients in proportions
+# recipe-calc
+Ветка для разработки нового функционала калькулятора.
+Для запуска проекта требуется liveServer (используются import-ы)
