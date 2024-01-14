@@ -1,2 +1,3 @@
-# Re-count for recipe, web application for recalculating recipe ingredients in proportions
-src: https://marss-hub.github.io/re-count-for-recipe/
+# recipe-calc
+Ветка для разработки нового функционала калькулятора.
+Для запуска проекта требуется liveServer (используются import-ы)

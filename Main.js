@@ -102,7 +102,7 @@ export class Main {
         downloadFileLink.href = URL.createObjectURL(recipeData);
         
         this.showFormRecalc();
-        root.scrollIntoView(); //прокрутка страницы к началу программы(пересчетчику)
+        root.scrollIntoView(true); //прокрутка страницы к началу программы(пересчетчику)
       }
     };
 
