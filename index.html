@@ -33,42 +33,7 @@
       онлайн-калькуляторе. Вы получите рецепт с нужными пропорциями ингредиентов
       и сможете сохранить его себе на устройство.
     </p>
-    <div class="row gx-0">
-      <div class="col"></div>
-      <div
-        class="col-md-10 col-xl-8 my-2 p-3 rounded border border-info bg-primary bg-gradient bg-opacity-10"
-      >
-        <h2 class="h6 badge text-bg-primary rounded-pill bg-opacity-75">
-          Как пользоваться?
-        </h2>
-        <ol class="small text-body-secondary">
-          <li>
-            Построчно введите продукты оригинального рецепта, используйте кнопку
-            «добавить ингредиент».
-          </li>
-          <li>Нажмите кнопку «пересчитать значения».</li>
-          <li>
-            Изменяйте объем любой позиции, а количество остальных продуктов
-            пересчитается автоматически.
-          </li>
-        </ol>
-        <h2 class="h6 badge text-bg-primary rounded-pill bg-opacity-75">
-          Важно!
-        </h2>
-        <ul class="small text-body-secondary">
-          <li>
-            Вы можете скачать рецепт с новыми пропорциями себе на устройство по
-            кнопке «сохранить рецепт»
-          </li>
-          <li>
-            Вы можете вернуться и скорректировать оригинальные значения по
-            кнопке «изменить оригинал»
-          </li>
-        </ul>
-      </div>
-      <div class="col"></div>
-    </div>
-    <div class="app-box row gx-0">
+       <div class="app-box row gx-0">
       <div class="col"></div>
       <div
         class="app bg-light border border-primary-subtle rounded col-md-10 col-xl-8"
@@ -129,9 +94,9 @@
           <div class="form-builder my-2">
             <div id="input-recipe">
               <div class="mx-2 pt-3">
-                <p class="lead text-body">
-                  Введите ингредиенты согласно оригинального рецепта
-                </p>
+                <p class="lead text-body-emphasis">
+                  Введите ингредиенты согласно <mark>оригинального</mark> рецепта
+                             </p>
                 <p class="small text-secondary">
                   (Для добавления продукта воспользуйтесь кнопкой "Добавить
                   ингредиент")
@@ -222,10 +187,48 @@
       </div>
       <div class="col"></div>
     </div>
+    <div class="row gx-0 mt-2 ">
+      <div class="col"></div>
+      <div
+        class="col-md-10 col-xl-8 my-2 p-3 rounded border border-info bg-primary bg-gradient bg-opacity-10"
+      >
+        <h2 class="h6 badge text-bg-primary rounded-pill bg-opacity-75">
+          Как пользоваться?
+        </h2>
+        <ol class="small text-body-secondary">
+          <li>
+            Построчно введите продукты оригинального рецепта, используйте кнопку
+            «добавить ингредиент».
+          </li>
+          <li>Нажмите кнопку «пересчитать значения».</li>
+          <li>
+            Изменяйте объем любой позиции, а количество остальных продуктов
+            пересчитается автоматически.
+          </li>
+        </ol>
+        <h2 class="h6 badge text-bg-primary rounded-pill bg-opacity-75">
+          Важно!
+        </h2>
+        <ul class="small text-body-secondary">
+          <li>
+            Вы можете скачать рецепт с новыми пропорциями себе на устройство по
+            кнопке «сохранить рецепт»
+          </li>
+          <li>
+            Вы можете вернуться и скорректировать оригинальные значения по
+            кнопке «изменить оригинал»
+          </li>
+        </ul>
+      </div>
+      <div class="col"></div>
+    </div>
+ 
     <h2 class="h5 mx-2 mx-md-5 mt-4 text-body">
       Что можно посчитать в онлайн-калькуляторе для пересчета ингредиентов ?
     </h2>
-    <div class="mt-4 mx-2 mx-md-5 fw-light">
+           <div class="row gx-0">
+      <div class="col"></div>
+    <div class="col-10 mx-2 mx-md-5 fw-light">
       <table class="table table-striped">
         <thead>
           <tr>
@@ -247,11 +250,10 @@
             </td>
           </tr>
           <tr>
-            <td>Уменьшение и увеличение количества порций готового блюда</td>
+            <td>Увеличить и уменьшить количество порций готового блюда</td>
             <td>
               При вводе состава оригинального рецепта введите также позицию
-              &laquo;порции&raquo; а количество порций в штуках внесите в окошко
-              &laquo;количество&raquo;. В режиме пересчета измените эту позицию
+              &laquo;порции&raquo; а в окошко &laquo;количество&raquo; внесите количество порций. В режиме пересчета измените эту позицию
             </td>
             <td>
               Оригинальный рецепт на три порции, а приготовить нужно пять.
@@ -261,9 +263,8 @@
             <td>Изменить итоговый &laquo;выход&raquo; (вес) блюда</td>
             <td>
               При вводе состава оригинального рецепта введите также позицию
-              &laquo;вес&raquo; а оригинальный вес продукта внесите в окошко
-              &laquo;количество&raquo;. В режиме пересчета измените эту позицию
-              на тот вес, который необходим
+              &laquo;вес&raquo; и внесите в окошко &laquo;количество&raquo; оригинальный вес продукта. В режиме пересчета измените эту позицию
+              на вес, который необходим
             </td>
             <td>
               У вас есть рецепт для пирога 1 кг, а вы хотите испечь пирог весом
@@ -275,8 +276,8 @@
             <td>
               При вводе состава оригинального рецепта введите также позицию
               &laquo;масштаб&raquo; и в окошке &laquo;количество&raquo; укажите
-              1 или 100%. В режиме пересчета измените эту в столько раз или на
-              такой %, который требуется
+              1 или 100%. В режиме пересчета измените позицию в разы или на
+              такой %, который требуется.
             </td>
             <td>
               У вас есть рецепт одного кекса, а вы планируете приготовить пять.
@@ -286,13 +287,14 @@
         </tbody>
       </table>
     </div>
-    <div class="m-5">
+    <div class="col"></div>
+    <div class="m-4 ">
       <div>
         <a
           class="link-offset-2 link-underline link-underline-opacity-0"
           href="https://github.com/marss-hub/re-count-for-recipe"
         >
-          <span class="badge text-bg-secondary fw-medium fs-6"
+          <span class="badge text-bg-secondary fw-medium "
             >Re-count for recipe</span
           >
         </a>
@@ -302,7 +304,7 @@
           class="link-offset-2 link-underline link-underline-opacity-0"
           href="https://github.com/marss-hub/re-count-for-recipe"
         >
-          <i class="bi-github" style="font-size: 2em; color: #6c757d">
+          <i class="bi-github" style="font-size: 1em; color: #6c757d">
             GitHub</i
           >
         </a>
