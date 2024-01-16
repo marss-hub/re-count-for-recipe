@@ -102,7 +102,13 @@ export class Main {
         downloadFileLink.href = URL.createObjectURL(recipeData);
         
         this.showFormRecalc();
-        root.scrollIntoView(true); //прокрутка страницы к началу программы(пересчетчику)
+        //прокрутка страницы к началу программы(пересчетчику)
+        const recalcFormDiv = document.querySelector('.form-recalc');
+        const topPos = recalcFormDiv.getBoundingClientRect().top + window.scrollY;
+        window.scrollTo({
+          top: topPos, // scroll so that the element is at the top of the view
+          behavior: 'smooth' // smooth scroll
+        })
       }
     };
 
